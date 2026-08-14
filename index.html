@@ -288,21 +288,21 @@
 </footer>
 <script>
 function searchCars() {
-    const search = document.querySelector('.search-box input').value.toLowerCase();
+    const search = document.querySelector('.search-box input').value.toLowerCase().trim();
     const selects = document.querySelectorAll('.search-box select');
-    const brand = selects[0].value;
-    const city = selects[1].value;
+
+    const brand = selects[0].value.toLowerCase();
+    const city = selects[1].value.toLowerCase();
 
     const cars = document.querySelectorAll('.car');
     let found = 0;
 
     cars.forEach(car => {
-        const name = car.querySelector('h3').textContent.toLowerCase();
-        const details = car.querySelector('.details').textContent;
+        const text = car.textContent.toLowerCase();
 
-        const matchSearch = search === '' || name.includes(search);
-        const matchBrand = brand === 'جميع الماركات' || name.includes(brand.toLowerCase());
-        const matchCity = city === 'جميع المدن' || details.includes(city);
+        const matchSearch = search === '' || text.includes(search);
+        const matchBrand = brand === 'جميع الماركات' || text.includes(brand);
+        const matchCity = city === 'جميع المدن' || text.includes(city);
 
         if (matchSearch && matchBrand && matchCity) {
             car.style.display = '';
@@ -313,7 +313,7 @@ function searchCars() {
     });
 
     if (found === 0) {
-        alert('لم يتم العثور على سيارة مطابقة للبحث 🚗');
+        alert('🚗 لم يتم العثور على سيارة مطابقة للبحث');
     }
 }
 </script>
