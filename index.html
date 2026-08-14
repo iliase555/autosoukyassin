@@ -211,7 +211,7 @@
             <option>مراكش</option>
         </select>
 
-        <button>بحث 🔍</button>
+        <button onclick="searchCars()">بحث 🔍</button>
     </div>
 </section>
 
@@ -286,6 +286,36 @@
 <footer id="contact">
     <p>© 2026 AutoSouk - جميع الحقوق محفوظة</p>
 </footer>
+<script>
+function searchCars() {
+    const search = document.querySelector('.search-box input').value.toLowerCase();
+    const selects = document.querySelectorAll('.search-box select');
+    const brand = selects[0].value;
+    const city = selects[1].value;
 
+    const cars = document.querySelectorAll('.car');
+    let found = 0;
+
+    cars.forEach(car => {
+        const name = car.querySelector('h3').textContent.toLowerCase();
+        const details = car.querySelector('.details').textContent;
+
+        const matchSearch = search === '' || name.includes(search);
+        const matchBrand = brand === 'جميع الماركات' || name.includes(brand.toLowerCase());
+        const matchCity = city === 'جميع المدن' || details.includes(city);
+
+        if (matchSearch && matchBrand && matchCity) {
+            car.style.display = '';
+            found++;
+        } else {
+            car.style.display = 'none';
+        }
+    });
+
+    if (found === 0) {
+        alert('لم يتم العثور على سيارة مطابقة للبحث 🚗');
+    }
+}
+</script>
 </body>
 </html>
