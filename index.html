@@ -1,321 +1,1129 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoSouk - بيع وشراء السيارات</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+<title>AutoSouk - بيع وشراء السيارات</title>
 
-        body {
-            background: #f5f6f8;
-            color: #222;
-        }
+<style>
 
-        header {
-            background: #111827;
-            color: white;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-        }
+body {
+    background: #f5f6f8;
+    color: #222;
+}
 
-        .logo span {
-            color: #22c55e;
-        }
+/* HEADER */
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-right: 20px;
-        }
+header {
+    background: #111827;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .hero {
-            background: linear-gradient(135deg, #111827, #1f2937);
-            color: white;
-            padding: 70px 8%;
-            text-align: center;
-        }
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
 
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
+.logo span {
+    color: #22c55e;
+}
 
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            color: #d1d5db;
-        }
+nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
 
-        .search-box {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            max-width: 900px;
-            margin: auto;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+nav a {
+    color: white;
+    text-decoration: none;
+}
 
-        .search-box input,
-        .search-box select {
-            flex: 1;
-            min-width: 160px;
-            padding: 14px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
+.add-btn {
+    background: #22c55e;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
-        .search-box button {
-            background: #22c55e;
-            color: white;
-            border: none;
-            padding: 14px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+/* HERO */
 
-        .cars {
-            padding: 50px 8%;
-        }
+.hero {
+    background: linear-gradient(135deg, #111827, #1f2937);
+    color: white;
+    padding: 65px 7%;
+    text-align: center;
+}
 
-        .cars h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 30px;
-        }
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
 
-        .car-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
+.hero p {
+    font-size: 18px;
+    color: #d1d5db;
+    margin-bottom: 30px;
+}
 
-        .car {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-        }
+/* SEARCH */
 
-        .car img {
-            width: 100%;
-            height: 190px;
-            object-fit: cover;
-        }
+.search-box {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    max-width: 1100px;
+    margin: auto;
 
-        .car-info {
-            padding: 18px;
-        }
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr auto;
+    gap: 10px;
+}
 
-        .car h3 {
-            margin-bottom: 10px;
-        }
+.search-box input,
+.search-box select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+}
 
-        .price {
-            color: #16a34a;
-            font-size: 20px;
-            font-weight: bold;
-            margin: 10px 0;
-        }
+.search-box input:focus,
+.search-box select:focus {
+    border-color: #22c55e;
+}
 
-        .details {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.8;
-        }
+.search-box button {
+    background: #22c55e;
+    color: white;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
 
-        .contact {
-            display: block;
-            text-align: center;
-            background: #111827;
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
+/* CARS */
 
-        footer {
-            background: #111827;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            margin-top: 30px;
-        }
+.cars {
+    padding: 50px 7%;
+}
 
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
+.cars h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
 
-            .hero h1 {
-                font-size: 30px;
-            }
-        }
-    </style>
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.car {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.car:hover {
+    transform: translateY(-5px);
+}
+
+.car img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.car-info {
+    padding: 18px;
+}
+
+.car h3 {
+    margin-bottom: 10px;
+    font-size: 21px;
+}
+
+.price {
+    color: #16a34a;
+    font-size: 21px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.details {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.contact {
+    display: block;
+    text-align: center;
+    background: #111827;
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.delete-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #ef4444;
+    color: white;
+    cursor: pointer;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 1000;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    border-radius: 15px;
+    padding: 25px;
+    position: relative;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 12px;
+    left: 18px;
+
+    font-size: 28px;
+    cursor: pointer;
+    color: #555;
+}
+
+/* FORM */
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.empty {
+    text-align: center;
+    padding: 40px;
+    color: #777;
+    grid-column: 1 / -1;
+}
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .search-box {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .search-box {
+        grid-template-columns: 1fr;
+    }
+
+    .cars {
+        padding: 35px 5%;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
-    <div class="logo">Auto<span>Souk</span></div>
+
+    <div class="logo">
+        Auto<span>Souk</span>
+    </div>
 
     <nav>
+
         <a href="#">الرئيسية</a>
-        <a href="#cars">السيارات</a>
-        <a href="#contact">تواصل معنا</a>
+
+        <a href="#cars">
+            السيارات
+        </a>
+
+        <button class="add-btn" onclick="openModal()">
+            ➕ أضف سيارتك
+        </button>
+
     </nav>
+
 </header>
 
+
+<!-- HERO -->
+
 <section class="hero">
-    <h1>اعثر على سيارتك القادمة 🚗</h1>
-    <p>أفضل السيارات المستعملة في المغرب</p>
+
+    <h1>
+        اعثر على سيارتك القادمة 🚗
+    </h1>
+
+    <p>
+        أفضل السيارات المستعملة في المغرب
+    </p>
+
+
+    <!-- SEARCH -->
 
     <div class="search-box">
-        <input id="carSearch" type="text" placeholder="ابحث عن سيارة..." autocomplete="off">
 
-        <select>
-            <option>جميع الماركات</option>
+        <input
+            id="carSearch"
+            type="text"
+            placeholder="ابحث عن سيارة..."
+        >
+
+
+        <select id="brandFilter">
+
+            <option value="">
+                جميع الماركات
+            </option>
+
             <option>Dacia</option>
             <option>Renault</option>
             <option>Peugeot</option>
             <option>Volkswagen</option>
             <option>Mercedes</option>
             <option>BMW</option>
+            <option>Ford</option>
+            <option>Toyota</option>
+
         </select>
 
-        <select>
-            <option>جميع المدن</option>
+
+        <select id="cityFilter">
+
+            <option value="">
+                جميع المدن
+            </option>
+
             <option>الرباط</option>
             <option>الدار البيضاء</option>
             <option>فاس</option>
             <option>مكناس</option>
             <option>طنجة</option>
             <option>مراكش</option>
+            <option>أكادير</option>
+
         </select>
 
-        <button onclick="searchCars()">بحث 🔍</button>
+
+        <select id="fuelFilter">
+
+            <option value="">
+                كل أنواع الوقود
+            </option>
+
+            <option>Diesel</option>
+            <option>Essence</option>
+            <option>Hybrid</option>
+            <option>Electric</option>
+
+        </select>
+
+
+        <input
+            id="maxPrice"
+            type="number"
+            placeholder="السعر الأقصى DH"
+        >
+
+
+        <button onclick="searchCars()">
+            🔍 بحث
+        </button>
+
     </div>
+
 </section>
+
+
+<!-- CARS -->
 
 <section class="cars" id="cars">
 
-    <h2>🚘 أحدث السيارات</h2>
+    <h2>
+        🚘 أحدث السيارات
+    </h2>
 
-    <div class="car-grid">
+    <div
+        class="car-grid"
+        id="carGrid"
+    ></div>
 
-        <div class="car">
-            <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80">
-
-            <div class="car-info">
-                <h3>Dacia Logan</h3>
-                <div class="price">95,000 DH</div>
-
-                <div class="details">
-                    📅 2021<br>
-                    ⛽ Diesel<br>
-                    📍 الرباط
-                </div>
-
-                <a class="contact" href="tel:+212600000000">
-                    📞 تواصل مع البائع
-                </a>
-            </div>
-        </div>
-
-
-        <div class="car">
-            <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=800&q=80">
-
-            <div class="car-info">
-                <h3>Volkswagen Golf</h3>
-                <div class="price">145,000 DH</div>
-
-                <div class="details">
-                    📅 2020<br>
-                    ⛽ Diesel<br>
-                    📍 الدار البيضاء
-                </div>
-
-                <a class="contact" href="tel:+212600000000">
-                    📞 تواصل مع البائع
-                </a>
-            </div>
-        </div>
-
-
-        <div class="car">
-            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80">
-
-            <div class="car-info">
-                <h3>BMW Série 3</h3>
-                <div class="price">230,000 DH</div>
-
-                <div class="details">
-                    📅 2019<br>
-                    ⛽ Diesel<br>
-                    📍 طنجة
-                </div>
-
-                <a class="contact" href="tel:+212600000000">
-                    📞 تواصل مع البائع
-                </a>
-            </div>
-        </div>
-
-    </div>
 </section>
 
-<footer id="contact">
-    <p>© 2026 AutoSouk - جميع الحقوق محفوظة</p>
+
+<!-- MODAL -->
+
+<div
+    class="modal"
+    id="addModal"
+>
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            onclick="closeModal()"
+        >
+            ×
+        </span>
+
+        <h2>
+            🚗 أضف سيارتك
+        </h2>
+
+
+        <form id="carForm">
+
+
+            <div class="form-group">
+
+                <label>
+                    اسم السيارة
+                </label>
+
+                <input
+                    id="carName"
+                    type="text"
+                    placeholder="مثال: Dacia Logan"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    الماركة
+                </label>
+
+                <select
+                    id="carBrand"
+                    required
+                >
+
+                    <option value="">
+                        اختر الماركة
+                    </option>
+
+                    <option>Dacia</option>
+                    <option>Renault</option>
+                    <option>Peugeot</option>
+                    <option>Volkswagen</option>
+                    <option>Mercedes</option>
+                    <option>BMW</option>
+                    <option>Ford</option>
+                    <option>Toyota</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    السعر بالدرهم
+                </label>
+
+                <input
+                    id="carPrice"
+                    type="number"
+                    placeholder="مثال: 95000"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    سنة الصنع
+                </label>
+
+                <input
+                    id="carYear"
+                    type="number"
+                    min="1980"
+                    max="2026"
+                    placeholder="مثال: 2021"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    نوع الوقود
+                </label>
+
+                <select
+                    id="carFuel"
+                    required
+                >
+
+                    <option value="">
+                        اختر نوع الوقود
+                    </option>
+
+                    <option>Diesel</option>
+                    <option>Essence</option>
+                    <option>Hybrid</option>
+                    <option>Electric</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    المدينة
+                </label>
+
+                <select
+                    id="carCity"
+                    required
+                >
+
+                    <option value="">
+                        اختر المدينة
+                    </option>
+
+                    <option>الرباط</option>
+                    <option>الدار البيضاء</option>
+                    <option>فاس</option>
+                    <option>مكناس</option>
+                    <option>طنجة</option>
+                    <option>مراكش</option>
+                    <option>أكادير</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    رابط صورة السيارة
+                </label>
+
+                <input
+                    id="carImage"
+                    type="url"
+                    placeholder="https://..."
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    رقم هاتف البائع
+                </label>
+
+                <input
+                    id="carPhone"
+                    type="tel"
+                    placeholder="+212600000000"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                class="submit-btn"
+                type="submit"
+            >
+                🚀 نشر الإعلان
+            </button>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 AutoSouk - جميع الحقوق محفوظة
+    </p>
+
 </footer>
+
+
 <script>
-function searchCars() {
-    const search = document.querySelector('.search-box input').value.toLowerCase().trim();
-    const selects = document.querySelectorAll('.search-box select');
 
-    const brand = selects[0].value.toLowerCase();
-    const city = selects[1].value.toLowerCase();
+/* =========================
+   DATA
+========================= */
 
-    const cars = document.querySelectorAll('.car');
-    let found = 0;
+let cars = JSON.parse(
+    localStorage.getItem("autosoukCars")
+) || [
 
-    cars.forEach(car => {
-        const text = car.textContent.toLowerCase();
+    {
+        id: 1,
+        name: "Dacia Logan",
+        brand: "Dacia",
+        price: 95000,
+        year: 2021,
+        fuel: "Diesel",
+        city: "الرباط",
+        image:
+        "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80",
+        phone: "+212600000000"
+    },
 
-        const matchSearch = search === '' || text.includes(search);
-        const matchBrand = brand === 'جميع الماركات' || text.includes(brand);
-        const matchCity = city === 'جميع المدن' || text.includes(city);
+    {
+        id: 2,
+        name: "Volkswagen Golf",
+        brand: "Volkswagen",
+        price: 145000,
+        year: 2020,
+        fuel: "Diesel",
+        city: "الدار البيضاء",
+        image:
+        "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=800&q=80",
+        phone: "+212600000000"
+    },
 
-        if (matchSearch && matchBrand && matchCity) {
-            car.style.display = '';
-            found++;
-        } else {
-            car.style.display = 'none';
-        }
+    {
+        id: 3,
+        name: "BMW Série 3",
+        brand: "BMW",
+        price: 230000,
+        year: 2019,
+        fuel: "Diesel",
+        city: "طنجة",
+        image:
+        "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80",
+        phone: "+212600000000"
+    }
+
+];
+
+
+/* =========================
+   DISPLAY CARS
+========================= */
+
+function displayCars(list = cars) {
+
+    const grid =
+        document.getElementById("carGrid");
+
+    grid.innerHTML = "";
+
+    if (list.length === 0) {
+
+        grid.innerHTML = `
+            <div class="empty">
+                🚗 لم يتم العثور على سيارات مطابقة
+            </div>
+        `;
+
+        return;
+    }
+
+
+    list.forEach(car => {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "car";
+
+
+        card.innerHTML = `
+
+            <img
+                src="${car.image}"
+                alt="${car.name}"
+            >
+
+            <div class="car-info">
+
+                <h3>
+                    ${car.name}
+                </h3>
+
+                <div class="price">
+                    ${Number(car.price).toLocaleString("fr-FR")} DH
+                </div>
+
+                <div class="details">
+
+                    📅 ${car.year}
+                    <br>
+
+                    ⛽ ${car.fuel}
+                    <br>
+
+                    📍 ${car.city}
+
+                </div>
+
+                <a
+                    class="contact"
+                    href="tel:${car.phone}"
+                >
+                    📞 تواصل مع البائع
+                </a>
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteCar(${car.id})"
+                >
+                    🗑️ حذف الإعلان
+                </button>
+
+            </div>
+        `;
+
+
+        grid.appendChild(card);
+
     });
 
-    if (found === 0) {
-        alert('🚗 لم يتم العثور على سيارة مطابقة للبحث');
-    }
 }
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchCars() {
+
+    const search =
+        document
+        .getElementById("carSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const brand =
+        document
+        .getElementById("brandFilter")
+        .value;
+
+
+    const city =
+        document
+        .getElementById("cityFilter")
+        .value;
+
+
+    const fuel =
+        document
+        .getElementById("fuelFilter")
+        .value;
+
+
+    const maxPrice =
+        Number(
+            document
+            .getElementById("maxPrice")
+            .value
+        );
+
+
+    const filtered =
+        cars.filter(car => {
+
+            const matchSearch =
+                search === "" ||
+                car.name
+                .toLowerCase()
+                .includes(search) ||
+                car.brand
+                .toLowerCase()
+                .includes(search);
+
+
+            const matchBrand =
+                brand === "" ||
+                car.brand === brand;
+
+
+            const matchCity =
+                city === "" ||
+                car.city === city;
+
+
+            const matchFuel =
+                fuel === "" ||
+                car.fuel === fuel;
+
+
+            const matchPrice =
+                !maxPrice ||
+                Number(car.price) <= maxPrice;
+
+
+            return (
+                matchSearch &&
+                matchBrand &&
+                matchCity &&
+                matchFuel &&
+                matchPrice
+            );
+
+        });
+
+
+    displayCars(filtered);
+
+}
+
+
+/* =========================
+   LIVE SEARCH
+========================= */
+
+document
+.getElementById("carSearch")
+.addEventListener(
+    "input",
+    searchCars
+);
+
+
+document
+.getElementById("maxPrice")
+.addEventListener(
+    "input",
+    searchCars
+);
+
+
+document
+.getElementById("brandFilter")
+.addEventListener(
+    "change",
+    searchCars
+);
+
+
+document
+.getElementById("cityFilter")
+.addEventListener(
+    "change",
+    searchCars
+);
+
+
+document
+.getElementById("fuelFilter")
+.addEventListener(
+    "change",
+    searchCars
+);
+
+
+/* =========================
+   MODAL
+========================= */
+
+function openModal() {
+
+    document
+    .getElementById("addModal")
+    .style.display = "flex";
+
+}
+
+
+function closeModal() {
+
+    document
+    .getElementById("addModal")
+    .style.display = "none";
+
+}
+
+
+/* Close when clicking outside */
+
+window.onclick = function(event) {
+
+    const modal =
+        document.getElementById("addModal");
+
+    if (event.target === modal) {
+
+        closeModal();
+
+    }
+
+};
+
+
+/* =========================
+   ADD CAR
+========================= */
+
+document
+.getElementById("carForm")
+.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const newCar = {
+
+            id: Date.now(),
+
+            name:
+                document
+                .getElementById("carName")
+                .value
+                .trim(),
+
+            brand:
+                document
+                .getElementById("carBrand")
+                .value,
+
+            price:
+                Number(
+                    document
+                    .getElementById("carPrice")
+                    .value
+                ),
+
+            year:
+                Number(
+                    document
+                    .getElementById("carYear")
+                    .value
+                ),
+
+            fuel:
+                document
+                .getElementById("carFuel")
+                .value,
+
+            city:
+                document
+                .getElementById("carCity")
+                .value,
+
+            image:
+                document
+                .getElementById("carImage")
+                .value
+                .trim(),
+
+            phone:
+                document
+                .getElementById("carPhone")
+                .value
+                .trim()
+
+        };
+
+
+        cars.unshift(newCar);
+
+
+        localStorage.setItem(
+            "autosoukCars",
+            JSON.stringify(cars)
+        );
+
+
+        displayCars();
+
+
+        document
+        .getElementById("carForm")
+        .reset();
+
+
+        closeModal();
+
+
+        document
+        .getElementById("cars")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+
+        alert(
+            "✅ تم نشر إعلان سيارتك بنجاح!"
+        );
+
+    }
+);
+
+
+/* =========================
+   DELETE CAR
+========================= */
+
+function deleteCar(id) {
+
+    const confirmDelete =
+        confirm(
+            "هل تريد فعلاً حذف هذا الإعلان؟"
+        );
+
+
+    if (!confirmDelete) {
+        return;
+    }
+
+
+    cars =
+        cars.filter(
+            car => car.id !== id
+        );
+
+
+    localStorage.setItem(
+        "autosoukCars",
+        JSON.stringify(cars)
+    );
+
+
+    displayCars();
+
+}
+
+
+/* =========================
+   INITIAL DISPLAY
+========================= */
+
+displayCars();
+
 </script>
+
 </body>
 </html>
