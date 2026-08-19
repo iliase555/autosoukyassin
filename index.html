@@ -4,326 +4,437 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AutoSouk - بيع وشراء السيارات</title>
+<title>AutoSouk | سوق السيارات</title>
 
 <style>
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Tahoma,sans-serif;
 }
 
-body {
-    background: #f5f6f8;
-    color: #222;
+body{
+    background:#f3f5f7;
+    color:#17202a;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
-header {
-    background: #111827;
-    color: white;
-    padding: 18px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+header{
+    background:#ffffff;
+    border-bottom:1px solid #e5e7eb;
+    height:75px;
+    padding:0 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
-.logo {
-    font-size: 28px;
-    font-weight: bold;
+.logo{
+    font-size:28px;
+    font-weight:900;
+    color:#111827;
 }
 
-.logo span {
-    color: #22c55e;
+.logo span{
+    color:#16a34a;
 }
 
-nav {
-    display: flex;
-    align-items: center;
-    gap: 18px;
+nav{
+    display:flex;
+    align-items:center;
+    gap:25px;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
+nav a{
+    text-decoration:none;
+    color:#374151;
+    font-weight:600;
 }
 
-.add-btn {
-    background: #22c55e;
-    color: white;
-    border: none;
-    padding: 11px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
+.add-car{
+    border:none;
+    background:#16a34a;
+    color:white;
+    padding:12px 20px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:15px;
 }
 
-/* HERO */
-
-.hero {
-    background: linear-gradient(135deg, #111827, #1f2937);
-    color: white;
-    padding: 65px 7%;
-    text-align: center;
+.add-car:hover{
+    background:#15803d;
 }
 
-.hero h1 {
-    font-size: 42px;
-    margin-bottom: 15px;
+/* ================= HERO ================= */
+
+.hero{
+    background:
+    linear-gradient(rgba(17,24,39,.85),rgba(17,24,39,.92)),
+    url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=80");
+
+    background-size:cover;
+    background-position:center;
+
+    padding:90px 6%;
+    text-align:center;
+    color:white;
 }
 
-.hero p {
-    font-size: 18px;
-    color: #d1d5db;
-    margin-bottom: 30px;
+.hero h1{
+    font-size:48px;
+    margin-bottom:15px;
 }
 
-/* SEARCH */
-
-.search-box {
-    background: white;
-    padding: 20px;
-    border-radius: 14px;
-    max-width: 1100px;
-    margin: auto;
-
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr auto;
-    gap: 10px;
+.hero p{
+    font-size:19px;
+    color:#d1d5db;
+    margin-bottom:40px;
 }
 
-.search-box input,
-.search-box select {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    outline: none;
+/* ================= SEARCH ================= */
+
+.search-container{
+    background:white;
+    max-width:1150px;
+    margin:auto;
+    padding:18px;
+    border-radius:15px;
+    box-shadow:0 15px 40px rgba(0,0,0,.2);
 }
 
-.search-box input:focus,
-.search-box select:focus {
-    border-color: #22c55e;
+.search-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr 1fr auto;
+    gap:10px;
 }
 
-.search-box button {
-    background: #22c55e;
-    color: white;
-    border: none;
-    padding: 14px 22px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
+.search-grid input,
+.search-grid select{
+    border:1px solid #ddd;
+    padding:14px;
+    border-radius:8px;
+    outline:none;
+    background:white;
 }
 
-/* CARS */
-
-.cars {
-    padding: 50px 7%;
+.search-grid input:focus,
+.search-grid select:focus{
+    border-color:#16a34a;
 }
 
-.cars h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 30px;
+.search-btn{
+    border:none;
+    background:#16a34a;
+    color:white;
+    padding:0 22px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
 }
 
-.car-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+.search-btn:hover{
+    background:#15803d;
 }
 
-.car {
-    background: white;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: 0.3s;
+/* ================= SECTION ================= */
+
+.section{
+    padding:55px 6%;
 }
 
-.car:hover {
-    transform: translateY(-5px);
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
 }
 
-.car img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+.section-title h2{
+    font-size:30px;
 }
 
-.car-info {
-    padding: 18px;
+.results{
+    color:#6b7280;
 }
 
-.car h3 {
-    margin-bottom: 10px;
-    font-size: 21px;
+/* ================= CARS ================= */
+
+.car-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+    gap:25px;
 }
 
-.price {
-    color: #16a34a;
-    font-size: 21px;
-    font-weight: bold;
-    margin: 10px 0;
+.car-card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+    transition:.25s;
 }
 
-.details {
-    color: #666;
-    font-size: 14px;
-    line-height: 1.9;
+.car-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
 }
 
-.contact {
-    display: block;
-    text-align: center;
-    background: #111827;
-    color: white;
-    text-decoration: none;
-    padding: 12px;
-    border-radius: 8px;
-    margin-top: 15px;
+.car-image{
+    width:100%;
+    height:205px;
+    object-fit:cover;
+    display:block;
 }
 
-.delete-btn {
-    width: 100%;
-    margin-top: 8px;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    background: #ef4444;
-    color: white;
-    cursor: pointer;
+.car-content{
+    padding:18px;
 }
 
-/* MODAL */
-
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.65);
-    z-index: 1000;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
+.car-name{
+    font-size:21px;
+    font-weight:bold;
+    margin-bottom:8px;
 }
 
-.modal-content {
-    background: white;
-    width: 100%;
-    max-width: 600px;
-    max-height: 90vh;
-    overflow-y: auto;
-
-    border-radius: 15px;
-    padding: 25px;
-    position: relative;
+.car-price{
+    color:#16a34a;
+    font-size:22px;
+    font-weight:900;
+    margin-bottom:12px;
 }
 
-.modal-content h2 {
-    margin-bottom: 20px;
-    text-align: center;
+.car-details{
+    color:#6b7280;
+    line-height:2;
+    font-size:14px;
 }
 
-.close {
-    position: absolute;
-    top: 12px;
-    left: 18px;
-
-    font-size: 28px;
-    cursor: pointer;
-    color: #555;
+.contact-btn{
+    display:block;
+    margin-top:15px;
+    background:#111827;
+    color:white;
+    text-decoration:none;
+    text-align:center;
+    padding:12px;
+    border-radius:8px;
 }
 
-/* FORM */
-
-.form-group {
-    margin-bottom: 15px;
+.delete-btn{
+    width:100%;
+    margin-top:8px;
+    border:none;
+    padding:10px;
+    border-radius:8px;
+    background:#fee2e2;
+    color:#dc2626;
+    cursor:pointer;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 7px;
-    font-weight: bold;
+/* ================= EMPTY ================= */
+
+.empty{
+    background:white;
+    border-radius:15px;
+    padding:60px 20px;
+    text-align:center;
+    color:#6b7280;
+    grid-column:1/-1;
+}
+
+.empty-icon{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    z-index:500;
+    padding:20px;
+    overflow:auto;
+}
+
+.modal-box{
+    background:white;
+    max-width:650px;
+    margin:30px auto;
+    border-radius:18px;
+    padding:30px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    left:20px;
+    top:15px;
+    font-size:30px;
+    cursor:pointer;
+    color:#6b7280;
+}
+
+.modal-title{
+    text-align:center;
+    font-size:27px;
+    margin-bottom:25px;
+}
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:7px;
+    font-weight:bold;
 }
 
 .form-group input,
-.form-group select {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+.form-group select{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    outline:none;
 }
 
-.submit-btn {
-    width: 100%;
-    padding: 14px;
-    background: #22c55e;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 17px;
-    font-weight: bold;
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#16a34a;
 }
 
-.empty {
-    text-align: center;
-    padding: 40px;
-    color: #777;
-    grid-column: 1 / -1;
+/* ================= IMAGE UPLOAD ================= */
+
+.upload-box{
+    border:2px dashed #16a34a;
+    border-radius:12px;
+    padding:25px;
+    text-align:center;
+    cursor:pointer;
+    background:#f0fdf4;
 }
 
-footer {
-    background: #111827;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    margin-top: 30px;
+.upload-box:hover{
+    background:#dcfce7;
 }
 
-/* RESPONSIVE */
+.upload-box input{
+    display:none;
+}
 
-@media (max-width: 900px) {
+.upload-icon{
+    font-size:40px;
+    margin-bottom:10px;
+}
 
-    .search-box {
-        grid-template-columns: 1fr 1fr;
+.upload-text{
+    color:#166534;
+    font-weight:bold;
+}
+
+.preview{
+    display:none;
+    margin-top:15px;
+}
+
+.preview img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.publish-btn{
+    width:100%;
+    border:none;
+    background:#16a34a;
+    color:white;
+    padding:15px;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.publish-btn:hover{
+    background:#15803d;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#111827;
+    color:#9ca3af;
+    text-align:center;
+    padding:30px;
+    margin-top:40px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+    .search-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .search-btn{
+        padding:14px;
+    }
+}
+
+@media(max-width:650px){
+
+    header{
+        height:auto;
+        padding:15px 5%;
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav{
+        gap:12px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero{
+        padding:65px 5%;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .search-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding:40px 5%;
+    }
+
+    .section-title{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
     }
 
 }
-
-@media (max-width: 600px) {
-
-    header {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .hero h1 {
-        font-size: 30px;
-    }
-
-    .search-box {
-        grid-template-columns: 1fr;
-    }
-
-    .cars {
-        padding: 35px 5%;
-    }
-
-}
-
 </style>
 </head>
 
@@ -339,13 +450,15 @@ footer {
 
     <nav>
 
-        <a href="#">الرئيسية</a>
+        <a href="#">
+            الرئيسية
+        </a>
 
         <a href="#cars">
             السيارات
         </a>
 
-        <button class="add-btn" onclick="openModal()">
+        <button class="add-car" onclick="openModal()">
             ➕ أضف سيارتك
         </button>
 
@@ -359,84 +472,84 @@ footer {
 <section class="hero">
 
     <h1>
-        اعثر على سيارتك القادمة 🚗
+        سوق السيارات المغربي 🚗
     </h1>
 
     <p>
-        أفضل السيارات المستعملة في المغرب
+        اشترِ أو بِع سيارتك بسهولة وأمان
     </p>
 
 
-    <!-- SEARCH -->
+    <div class="search-container">
 
-    <div class="search-box">
+        <div class="search-grid">
 
-        <input
-            id="carSearch"
-            type="text"
-            placeholder="ابحث عن سيارة..."
-        >
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="🔎 ابحث عن الماركة أو السيارة..."
+            >
 
+            <select id="brandFilter">
 
-        <select id="brandFilter">
+                <option value="">
+                    كل الماركات
+                </option>
 
-            <option value="">
-                جميع الماركات
-            </option>
+                <option>Dacia</option>
+                <option>Renault</option>
+                <option>Peugeot</option>
+                <option>Volkswagen</option>
+                <option>Mercedes</option>
+                <option>BMW</option>
+                <option>Ford</option>
+                <option>Toyota</option>
 
-            <option>Dacia</option>
-            <option>Renault</option>
-            <option>Peugeot</option>
-            <option>Volkswagen</option>
-            <option>Mercedes</option>
-            <option>BMW</option>
-            <option>Ford</option>
-            <option>Toyota</option>
+            </select>
 
-        </select>
+            <select id="cityFilter">
 
+                <option value="">
+                    كل المدن
+                </option>
 
-        <select id="cityFilter">
+                <option>الرباط</option>
+                <option>الدار البيضاء</option>
+                <option>فاس</option>
+                <option>مكناس</option>
+                <option>طنجة</option>
+                <option>مراكش</option>
+                <option>أكادير</option>
 
-            <option value="">
-                جميع المدن
-            </option>
+            </select>
 
-            <option>الرباط</option>
-            <option>الدار البيضاء</option>
-            <option>فاس</option>
-            <option>مكناس</option>
-            <option>طنجة</option>
-            <option>مراكش</option>
-            <option>أكادير</option>
+            <select id="fuelFilter">
 
-        </select>
+                <option value="">
+                    الوقود
+                </option>
 
+                <option>Diesel</option>
+                <option>Essence</option>
+                <option>Hybrid</option>
+                <option>Electric</option>
 
-        <select id="fuelFilter">
+            </select>
 
-            <option value="">
-                كل أنواع الوقود
-            </option>
+            <input
+                id="priceFilter"
+                type="number"
+                placeholder="السعر الأقصى DH"
+            >
 
-            <option>Diesel</option>
-            <option>Essence</option>
-            <option>Hybrid</option>
-            <option>Electric</option>
+            <button
+                class="search-btn"
+                onclick="searchCars()"
+            >
+                🔎 بحث
+            </button>
 
-        </select>
-
-
-        <input
-            id="maxPrice"
-            type="number"
-            placeholder="السعر الأقصى DH"
-        >
-
-
-        <button onclick="searchCars()">
-            🔍 بحث
-        </button>
+        </div>
 
     </div>
 
@@ -445,11 +558,26 @@ footer {
 
 <!-- CARS -->
 
-<section class="cars" id="cars">
+<section
+    class="section"
+    id="cars"
+>
 
-    <h2>
-        🚘 أحدث السيارات
-    </h2>
+    <div class="section-title">
+
+        <h2>
+            🚘 أحدث الإعلانات
+        </h2>
+
+        <div
+            class="results"
+            id="results"
+        >
+            0 سيارة
+        </div>
+
+    </div>
+
 
     <div
         class="car-grid"
@@ -459,14 +587,14 @@ footer {
 </section>
 
 
-<!-- MODAL -->
+<!-- ADD CAR MODAL -->
 
 <div
     class="modal"
-    id="addModal"
+    id="modal"
 >
 
-    <div class="modal-content">
+    <div class="modal-box">
 
         <span
             class="close"
@@ -475,7 +603,7 @@ footer {
             ×
         </span>
 
-        <h2>
+        <h2 class="modal-title">
             🚗 أضف سيارتك
         </h2>
 
@@ -490,7 +618,7 @@ footer {
                 </label>
 
                 <input
-                    id="carName"
+                    id="name"
                     type="text"
                     placeholder="مثال: Dacia Logan"
                     required
@@ -505,10 +633,7 @@ footer {
                     الماركة
                 </label>
 
-                <select
-                    id="carBrand"
-                    required
-                >
+                <select id="brand" required>
 
                     <option value="">
                         اختر الماركة
@@ -531,11 +656,11 @@ footer {
             <div class="form-group">
 
                 <label>
-                    السعر بالدرهم
+                    السعر
                 </label>
 
                 <input
-                    id="carPrice"
+                    id="price"
                     type="number"
                     placeholder="مثال: 95000"
                     required
@@ -547,15 +672,15 @@ footer {
             <div class="form-group">
 
                 <label>
-                    سنة الصنع
+                    سنة السيارة
                 </label>
 
                 <input
-                    id="carYear"
+                    id="year"
                     type="number"
                     min="1980"
                     max="2026"
-                    placeholder="مثال: 2021"
+                    placeholder="2021"
                     required
                 >
 
@@ -568,13 +693,10 @@ footer {
                     نوع الوقود
                 </label>
 
-                <select
-                    id="carFuel"
-                    required
-                >
+                <select id="fuel" required>
 
                     <option value="">
-                        اختر نوع الوقود
+                        اختر الوقود
                     </option>
 
                     <option>Diesel</option>
@@ -593,10 +715,7 @@ footer {
                     المدينة
                 </label>
 
-                <select
-                    id="carCity"
-                    required
-                >
+                <select id="city" required>
 
                     <option value="">
                         اختر المدينة
@@ -615,18 +734,42 @@ footer {
             </div>
 
 
+            <!-- IMAGE -->
+
             <div class="form-group">
 
                 <label>
-                    رابط صورة السيارة
+                    صور السيارة
                 </label>
 
-                <input
-                    id="carImage"
-                    type="url"
-                    placeholder="https://..."
-                    required
-                >
+                <label class="upload-box">
+
+                    <input
+                        id="imageInput"
+                        type="file"
+                        accept="image/*"
+                        multiple
+                    >
+
+                    <div class="upload-icon">
+                        📸
+                    </div>
+
+                    <div class="upload-text">
+                        اضغط هنا لاختيار صور السيارة
+                    </div>
+
+                    <small>
+                        يمكنك اختيار أكثر من صورة
+                    </small>
+
+                </label>
+
+
+                <div
+                    class="preview"
+                    id="preview"
+                ></div>
 
             </div>
 
@@ -634,11 +777,11 @@ footer {
             <div class="form-group">
 
                 <label>
-                    رقم هاتف البائع
+                    رقم الهاتف
                 </label>
 
                 <input
-                    id="carPhone"
+                    id="phone"
                     type="tel"
                     placeholder="+212600000000"
                     required
@@ -648,7 +791,7 @@ footer {
 
 
             <button
-                class="submit-btn"
+                class="publish-btn"
                 type="submit"
             >
                 🚀 نشر الإعلان
@@ -662,12 +805,10 @@ footer {
 </div>
 
 
-<!-- FOOTER -->
-
 <footer>
 
     <p>
-        © 2026 AutoSouk - جميع الحقوق محفوظة
+        © 2026 AutoSouk — جميع الحقوق محفوظة
     </p>
 
 </footer>
@@ -675,105 +816,125 @@ footer {
 
 <script>
 
-/* =========================
+/* ===================================
    DATA
-========================= */
+=================================== */
 
-let cars = JSON.parse(
+let cars =
+JSON.parse(
     localStorage.getItem("autosoukCars")
 ) || [
 
     {
-        id: 1,
-        name: "Dacia Logan",
-        brand: "Dacia",
-        price: 95000,
-        year: 2021,
-        fuel: "Diesel",
-        city: "الرباط",
-        image:
-        "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80",
-        phone: "+212600000000"
+        id:1,
+        name:"Dacia Logan",
+        brand:"Dacia",
+        price:95000,
+        year:2021,
+        fuel:"Diesel",
+        city:"الرباط",
+        phone:"+212600000000",
+        image:"https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=900&q=80"
     },
 
     {
-        id: 2,
-        name: "Volkswagen Golf",
-        brand: "Volkswagen",
-        price: 145000,
-        year: 2020,
-        fuel: "Diesel",
-        city: "الدار البيضاء",
-        image:
-        "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=800&q=80",
-        phone: "+212600000000"
+        id:2,
+        name:"Volkswagen Golf",
+        brand:"Volkswagen",
+        price:145000,
+        year:2020,
+        fuel:"Diesel",
+        city:"الدار البيضاء",
+        phone:"+212600000000",
+        image:"https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=900&q=80"
     },
 
     {
-        id: 3,
-        name: "BMW Série 3",
-        brand: "BMW",
-        price: 230000,
-        year: 2019,
-        fuel: "Diesel",
-        city: "طنجة",
-        image:
-        "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80",
-        phone: "+212600000000"
+        id:3,
+        name:"BMW Série 3",
+        brand:"BMW",
+        price:230000,
+        year:2019,
+        fuel:"Diesel",
+        city:"طنجة",
+        phone:"+212600000000",
+        image:"https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=900&q=80"
     }
 
 ];
 
 
-/* =========================
-   DISPLAY CARS
-========================= */
+/* ===================================
+   DISPLAY
+=================================== */
 
-function displayCars(list = cars) {
+function displayCars(list){
 
     const grid =
         document.getElementById("carGrid");
 
-    grid.innerHTML = "";
+    const results =
+        document.getElementById("results");
 
-    if (list.length === 0) {
+    grid.innerHTML="";
 
-        grid.innerHTML = `
+    results.textContent =
+        `${list.length} سيارة`;
+
+
+    if(list.length === 0){
+
+        grid.innerHTML=`
+
             <div class="empty">
-                🚗 لم يتم العثور على سيارات مطابقة
+
+                <div class="empty-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    لم نجد أي سيارة
+                </h3>
+
+                <p>
+                    جرّب تغيير كلمات البحث أو الفلاتر
+                </p>
+
             </div>
+
         `;
 
         return;
     }
 
 
-    list.forEach(car => {
+    list.forEach(car=>{
 
         const card =
             document.createElement("div");
 
-        card.className = "car";
+        card.className="car-card";
 
 
-        card.innerHTML = `
+        card.innerHTML=`
 
             <img
+                class="car-image"
                 src="${car.image}"
                 alt="${car.name}"
             >
 
-            <div class="car-info">
+            <div class="car-content">
 
-                <h3>
+                <div class="car-name">
                     ${car.name}
-                </h3>
+                </div>
 
-                <div class="price">
+                <div class="car-price">
                     ${Number(car.price).toLocaleString("fr-FR")} DH
                 </div>
 
-                <div class="details">
+                <div class="car-details">
 
                     📅 ${car.year}
                     <br>
@@ -786,10 +947,10 @@ function displayCars(list = cars) {
                 </div>
 
                 <a
-                    class="contact"
+                    class="contact-btn"
                     href="tel:${car.phone}"
                 >
-                    📞 تواصل مع البائع
+                    📞 اتصل بالبائع
                 </a>
 
                 <button
@@ -800,6 +961,7 @@ function displayCars(list = cars) {
                 </button>
 
             </div>
+
         `;
 
 
@@ -810,15 +972,15 @@ function displayCars(list = cars) {
 }
 
 
-/* =========================
+/* ===================================
    SEARCH
-========================= */
+=================================== */
 
-function searchCars() {
+function searchCars(){
 
     const search =
         document
-        .getElementById("carSearch")
+        .getElementById("searchInput")
         .value
         .toLowerCase()
         .trim();
@@ -843,52 +1005,61 @@ function searchCars() {
 
 
     const maxPrice =
-        Number(
+        parseFloat(
             document
-            .getElementById("maxPrice")
+            .getElementById("priceFilter")
             .value
         );
 
 
     const filtered =
-        cars.filter(car => {
+        cars.filter(car=>{
 
-            const matchSearch =
-                search === "" ||
-                car.name
-                .toLowerCase()
-                .includes(search) ||
-                car.brand
-                .toLowerCase()
-                .includes(search);
+            const text =
+                (
+                    car.name +
+                    " " +
+                    car.brand +
+                    " " +
+                    car.city +
+                    " " +
+                    car.fuel +
+                    " " +
+                    car.year
+                ).toLowerCase();
 
 
-            const matchBrand =
-                brand === "" ||
+            const searchOK =
+                !search ||
+                text.includes(search);
+
+
+            const brandOK =
+                !brand ||
                 car.brand === brand;
 
 
-            const matchCity =
-                city === "" ||
+            const cityOK =
+                !city ||
                 car.city === city;
 
 
-            const matchFuel =
-                fuel === "" ||
+            const fuelOK =
+                !fuel ||
                 car.fuel === fuel;
 
 
-            const matchPrice =
-                !maxPrice ||
+            const priceOK =
+                isNaN(maxPrice) ||
                 Number(car.price) <= maxPrice;
 
 
-            return (
-                matchSearch &&
-                matchBrand &&
-                matchCity &&
-                matchFuel &&
-                matchPrice
+            return(
+                searchOK &&
+                brandOK &&
+                cityOK &&
+                fuelOK &&
+                priceOK
             );
 
         });
@@ -899,20 +1070,12 @@ function searchCars() {
 }
 
 
-/* =========================
+/* ===================================
    LIVE SEARCH
-========================= */
+=================================== */
 
 document
-.getElementById("carSearch")
-.addEventListener(
-    "input",
-    searchCars
-);
-
-
-document
-.getElementById("maxPrice")
+.getElementById("searchInput")
 .addEventListener(
     "input",
     searchCars
@@ -943,107 +1106,189 @@ document
 );
 
 
-/* =========================
+document
+.getElementById("priceFilter")
+.addEventListener(
+    "input",
+    searchCars
+);
+
+
+/* ===================================
    MODAL
-========================= */
+=================================== */
 
-function openModal() {
+function openModal(){
 
     document
-    .getElementById("addModal")
-    .style.display = "flex";
+    .getElementById("modal")
+    .style.display="block";
 
 }
 
 
-function closeModal() {
+function closeModal(){
 
     document
-    .getElementById("addModal")
-    .style.display = "none";
+    .getElementById("modal")
+    .style.display="none";
 
 }
 
 
-/* Close when clicking outside */
+window.addEventListener(
+    "click",
+    function(e){
 
-window.onclick = function(event) {
+        const modal =
+            document.getElementById("modal");
 
-    const modal =
-        document.getElementById("addModal");
+        if(e.target === modal){
 
-    if (event.target === modal) {
+            closeModal();
 
-        closeModal();
+        }
 
     }
+);
 
-};
+
+/* ===================================
+   IMAGE UPLOAD
+=================================== */
+
+let selectedImage = "";
 
 
-/* =========================
+document
+.getElementById("imageInput")
+.addEventListener(
+    "change",
+    function(){
+
+        const file =
+            this.files[0];
+
+        if(!file){
+            return;
+        }
+
+
+        if(!file.type.startsWith("image/")){
+
+            alert("❌ اختر صورة فقط");
+
+            return;
+
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload=function(e){
+
+            selectedImage =
+                e.target.result;
+
+
+            const preview =
+                document
+                .getElementById("preview");
+
+
+            preview.style.display="block";
+
+
+            preview.innerHTML=`
+
+                <img
+                    src="${selectedImage}"
+                    alt="معاينة السيارة"
+                >
+
+            `;
+
+        };
+
+
+        reader.readAsDataURL(file);
+
+    }
+);
+
+
+/* ===================================
    ADD CAR
-========================= */
+=================================== */
 
 document
 .getElementById("carForm")
 .addEventListener(
     "submit",
-    function(event) {
+    function(e){
 
-        event.preventDefault();
+        e.preventDefault();
 
 
-        const newCar = {
+        if(!selectedImage){
 
-            id: Date.now(),
+            alert(
+                "📸 الرجاء اختيار صورة السيارة"
+            );
+
+            return;
+
+        }
+
+
+        const newCar={
+
+            id:Date.now(),
 
             name:
                 document
-                .getElementById("carName")
+                .getElementById("name")
                 .value
                 .trim(),
 
             brand:
                 document
-                .getElementById("carBrand")
+                .getElementById("brand")
                 .value,
 
             price:
                 Number(
                     document
-                    .getElementById("carPrice")
+                    .getElementById("price")
                     .value
                 ),
 
             year:
                 Number(
                     document
-                    .getElementById("carYear")
+                    .getElementById("year")
                     .value
                 ),
 
             fuel:
                 document
-                .getElementById("carFuel")
+                .getElementById("fuel")
                 .value,
 
             city:
                 document
-                .getElementById("carCity")
+                .getElementById("city")
                 .value,
-
-            image:
-                document
-                .getElementById("carImage")
-                .value
-                .trim(),
 
             phone:
                 document
-                .getElementById("carPhone")
+                .getElementById("phone")
                 .value
-                .trim()
+                .trim(),
+
+            image:selectedImage
 
         };
 
@@ -1057,12 +1302,20 @@ document
         );
 
 
-        displayCars();
+        displayCars(cars);
 
 
         document
         .getElementById("carForm")
         .reset();
+
+
+        selectedImage="";
+
+
+        document
+        .getElementById("preview")
+        .style.display="none";
 
 
         closeModal();
@@ -1071,32 +1324,32 @@ document
         document
         .getElementById("cars")
         .scrollIntoView({
-            behavior: "smooth"
+            behavior:"smooth"
         });
 
 
         alert(
-            "✅ تم نشر إعلان سيارتك بنجاح!"
+            "✅ تم نشر إعلان السيارة!"
         );
 
     }
 );
 
 
-/* =========================
-   DELETE CAR
-========================= */
+/* ===================================
+   DELETE
+=================================== */
 
-function deleteCar(id) {
+function deleteCar(id){
 
-    const confirmDelete =
-        confirm(
-            "هل تريد فعلاً حذف هذا الإعلان؟"
-        );
+    if(
+        !confirm(
+            "هل أنت متأكد من حذف الإعلان؟"
+        )
+    ){
 
-
-    if (!confirmDelete) {
         return;
+
     }
 
 
@@ -1112,16 +1365,16 @@ function deleteCar(id) {
     );
 
 
-    displayCars();
+    searchCars();
 
 }
 
 
-/* =========================
-   INITIAL DISPLAY
-========================= */
+/* ===================================
+   START
+=================================== */
 
-displayCars();
+displayCars(cars);
 
 </script>
 
