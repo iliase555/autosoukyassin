@@ -815,7 +815,14 @@ footer{
 
 
 <script>
+const SUPABASE_URL = "https://swhjooyhmypwzzarqtmx.supabase.co";
 
+const SUPABASE_KEY = "ضع هنا Publishable key الخاص بك";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 /* ===================================
    DATA
 =================================== */
